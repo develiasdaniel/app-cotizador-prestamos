@@ -5,7 +5,7 @@ import colors from "../utils/colors";
 export default function Footer() {
     return(
         <View style={styles.viewFooter}>
-            <Text style={styles.text}>CALCULAR</Text>
+            <Text style={styles.text}>CALCULAR pres</Text>
         </View>
     )
 }
