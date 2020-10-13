@@ -1,11 +1,15 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import colors from "../utils/colors";
 
-export default function Footer() {
+export default function Footer(props) {
+    const { calculate } = props;
+
     return(
         <View style={styles.viewFooter}>
-            <Text style={styles.text}>CALCULAR pres</Text>
+            <TouchableOpacity style={styles.button} onPress={calculate}>
+                <Text style={styles.text}>CALCULAR</Text>
+            </TouchableOpacity>            
         </View>
     )
 }
@@ -22,11 +26,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    button: {
+      backgroundColor: colors.PRIMARY_COLOR_DARK,
+      padding:16,   
+      borderRadius: 20,
+      width: '75%',
+    },
     text: {
         fontWeight: 'bold',
         fontSize: 18,
         color: '#fff',
-        backgroundColor: 'black',
-        borderRadius: 50,
+        textAlign: 'center',
     }
 })

@@ -9,7 +9,7 @@ export default function App() {
   const [interest, setInterest] = useState(null);
   const [months, setMonths] = useState(null);
 
-  const onSubmit = () =>{
+  const calculate = () =>{
     console.log("capital->", capital )
     console.log("interes->", interest )
     console.log("months->", months )
@@ -31,7 +31,7 @@ export default function App() {
         <Text>Resultado</Text>
       </View>
 
-      <Footer />
+      <Footer calculate={calculate}/>
     </>
   )
 }
