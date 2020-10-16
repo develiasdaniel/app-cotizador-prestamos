@@ -3,20 +3,23 @@ import {StyleSheet, View, Text, SafeAreaView, StatusBar, Button} from 'react-nat
 import colors from './src/utils/colors';
 import Form  from "./src/components/Form";
 import Footer from "./src/components/Footer";
+import ResultCalculation from "./src/components/ResultCalculation";
 
 export default function App() {
   const [capital, setCapital] = useState(null);
   const [interest, setInterest] = useState(null);
   const [months, setMonths] = useState(null);
   const [total, setTotal] = useState(null);
-  console.log(total)
+  const [errorMessage, setErrorMessage] = useState('');
+  
   const calculate = () =>{
+    reset();
     if(!capital){
-      console.log("añade la cantidad que quieras solicitar")
+      setErrorMessage("Añade la cantidad que quieras solicitar")
     }else if(!interest){
-      console.log("añade el interes que quieras solicitar")
+      setErrorMessage("Añade el interes del prestamo")
     }else if(!months){
-      console.log("añade el mes que quieras solicitar")
+      setErrorMessage("Selecciona los meses a pagar")
     }else{
       const i = interest / 100;
       const fee = capital / ((1 - Math.pow(i +1, -months)) / i);
@@ -26,6 +29,12 @@ export default function App() {
       })
     }
   }
+
+  const reset = () =>{
+    setErrorMessage("");
+    setTotal(null);
+  }
+
   return (
     <>
       <StatusBar backgroundColor={colors.PRIMARY_COLOR} barStyle="light-content" />
@@ -39,10 +48,7 @@ export default function App() {
         />
       </SafeAreaView>
 
-      <View>
-        <Text>Resultado</Text>
-      </View>
-
+      <ResultCalculation errorMessage={errorMessage}/>
       <Footer calculate={calculate}/>
     </>
   )
