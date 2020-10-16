@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, SafeAreaView, StatusBar, Button} from 'react-native';
 import colors from './src/utils/colors';
 import Form  from "./src/components/Form";
@@ -12,6 +12,11 @@ export default function App() {
   const [total, setTotal] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   
+  useEffect(() =>{
+    if(capital && interest && months) calculate();
+    else reset();
+  },[capital, interest, months])
+
   const calculate = () =>{
     reset();
     if(!capital){

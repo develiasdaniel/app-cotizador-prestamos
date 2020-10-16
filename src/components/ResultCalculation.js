@@ -4,7 +4,7 @@ import colors from "../utils/colors";
 
 export default function ResultCalculation(props) {
     const { capital, interest, months, total, errorMessage } = props;
-    console.log(props)
+    
     return(
         <View style={styles.content}>
             {total && (  
